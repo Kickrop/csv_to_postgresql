@@ -17,6 +17,7 @@ table_name = 'cleaned_data_2'
 file_name = 'cleaned_data' + '.csv'
 file_delimiter = ','
 
+#path to data file
 path = 'H:\Fronts\jan2019\correction(aug19)'
 
 os.chdir(path)
