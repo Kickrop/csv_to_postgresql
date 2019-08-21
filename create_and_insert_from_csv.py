@@ -7,9 +7,13 @@ from tqdm import tqdm
 conn = psycopg2.connect(host=private.sr_host, dbname=private.sr_dbname, user=private.sr_user, password=private.sr_password)
 cur = conn.cursor()
 
-#specify data base schema
+#specify postgres schema
 schema = 'fronts'
+
+#table name in postgres
 table_name = 'cleaned_data_2'
+
+#file that contains data to insert into postgres
 file_name = 'cleaned_data' + '.csv'
 file_delimiter = ','
 
