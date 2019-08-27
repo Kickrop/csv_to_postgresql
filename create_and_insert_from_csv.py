@@ -4,21 +4,21 @@ import private
 import os
 from tqdm import tqdm
 
-conn = psycopg2.connect(host=private.sr_host, dbname=private.sr_dbname, user=private.sr_user, password=private.sr_password)
+conn = psycopg2.connect(host=private.sr_host, dbname='cases', user=private.sr_user, password=private.sr_password)
 cur = conn.cursor()
 
 #specify postgres schema
-schema = 'fronts' #'stat_customs' #'fronts'
+schema = 'stat_customs'  #'fronts'
 
 #table name in postgres
-table_name = 'fronts_aug19' #'cleaned_fronts_aug2019'
+table_name = 'spr_tnvd' #'cleaned_fronts_aug2019'
 
 #file that contains data to insert into postgres
-file_name = 'IndicatorsExport 08.19' + '.csv'
-file_delimiter = ";"
+file_name = 'sp_THBED1_edit' + '.csv'
+file_delimiter = ';'
 
 #path to data file
-path = 'H:/Fronts/08_2019' #'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019'
+path = 'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files' 
 
 os.chdir(path)
 
