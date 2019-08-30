@@ -43,7 +43,6 @@ def create_table_with_csvheader():
 def insert_into_table():
     print('Insert may take some time...')
     with open(file_name, 'r', encoding="utf8") as f:
-        #csv_reader = csv.reader(f, delimiter=file_delimiter)
         cur.copy_expert(f"""COPY {schema}.{table_name} FROM STDIN WITH CSV HEADER DELIMITER as '{file_delimiter}'""", f)
     conn.commit()
     f.close()
