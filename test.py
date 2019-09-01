@@ -27,12 +27,18 @@ for gr in groups:
             # if i == gr:
             #     group = group + papers_list[i] + ';'
             try:
-                group = group + papers_list[i] + ' or '
+                if i < gr+500-2:
+                    group = group + papers_list[i] + ' or '
+                if i == gr+500-1:
+                    group = group + papers_list[i] + ','
             except:
                 print('mistakes were made')
     else:
         for j in range(gr, len(papers_list)):
+            if j < len(papers_list)-2:
                 group = group + papers_list[j] + ' or '
+            if j == len(papers_list)-1:
+                group = group + papers_list[j]
             # if i > gr and i < gr+500:
             #     group = group + papers_list[i] + ' or '
             # if i == gr+500:
@@ -40,5 +46,5 @@ for gr in groups:
 with open('output_test.txt', 'w') as f:
     f.write(group)
 f.close()
-#print(group[1])
+#print(group[-1])
 #group.to_csv('pam.csv')
