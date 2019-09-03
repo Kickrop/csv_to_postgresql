@@ -8,17 +8,17 @@ conn = psycopg2.connect(host=private.sr_host, dbname='cases', user=private.sr_us
 cur = conn.cursor()
 
 #specify postgres schema
-schema = 'stat_customs'  #'fronts'
+schema = 'statregistr' #'stat_customs'  #'fronts'
 
 #table name in postgres
-table_name = 'spr_tnvd' #'cleaned_fronts_aug2019'
+table_name = 'org_inf' #'cleaned_fronts_aug2019'
 
 #file that contains data to insert into postgres
-file_name = 'sp_THBED1_edit' + '.csv'
+file_name = 'org_inf' + '.csv'
 file_delimiter = ';'
 
 #path to data file
-path = 'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files' 
+path = 'H:/Работа2/27.05.19.Статрегистр/БД от росстата 28.08.19' #'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files' 
 
 os.chdir(path)
 
