@@ -8,13 +8,13 @@ conn = psycopg2.connect(host=private.sr_host, dbname='cases', user=private.sr_us
 cur = conn.cursor()
 
 #specify postgres schema
-schema = 'statregistr' #'stat_customs'  #'fronts'
+schema = 'statregistr' #'stat_customs'   #'fronts'
 
 #table name in postgres
-table_name = 'org_inf' #'cleaned_fronts_aug2019'
+table_name = 'vyborka_lic' #'cleaned_fronts_aug2019'
 
 #file that contains data to insert into postgres
-file_name = 'org_inf' + '.csv'
+file_name = 'vyborka_lic' + '.csv'
 file_delimiter = ';'
 
 #path to data file
@@ -29,7 +29,7 @@ def create_table_with_csvheader():
         csv_header = next(csv_reader)
         header_to_insert = ''
         for i in csv_header:      
-            header_to_insert = header_to_insert+ (i + ' text NOT NULL,')
+            header_to_insert = header_to_insert+ (i + ' text,')#(i + ' text NOT NULL,') #(i + ' varchar(255),') #
         header_to_insert = header_to_insert[0:-1]
         cur.execute(f"""
         CREATE TABLE IF NOT EXISTS {schema}.{table_name}(
