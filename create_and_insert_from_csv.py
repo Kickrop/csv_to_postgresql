@@ -11,10 +11,10 @@ cur = conn.cursor()
 schema = 'statregistr'#'rospatent' #'stat_customs'   #'fronts'statregistr
 
 #table name in postgres
-table_name = 's_pr_tip_pred' #'cleaned_fronts_aug2019'
+table_name = 's_pr_code_upd' #'cleaned_fronts_aug2019'
 
 #file that contains data to insert into postgres
-file_name = 's_pr_tip_pred' + '.csv'
+file_name = 's_pr_code_upd' + '.csv'
 file_delimiter = ';'
 
 #path to data file
@@ -50,7 +50,7 @@ def insert_into_table():
 
 def drop_table():
     cur.execute(f"""
-    DROP TABLE {schema}.{table_name}""")
+    DROP TABLE IF EXISTS {schema}.{table_name}""")
     conn.commit()
     print(f"{table_name} droped")
 
