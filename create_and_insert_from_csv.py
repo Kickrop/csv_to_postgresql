@@ -4,21 +4,21 @@ import private
 import os
 from tqdm import tqdm
 
-conn = psycopg2.connect(host=private.sr_host, dbname='cases', user=private.sr_user, password=private.sr_password)
+conn = psycopg2.connect(host=private.sr_host, dbname='cases', user=private.sr_user, password=private.sr_password) #main_ru
 cur = conn.cursor()
 
 #specify postgres schema
-schema = 'statregistr' #'stat_customs'   #'fronts'
+schema = 'statregistr'#'rospatent' #'stat_customs'   #'fronts'statregistr
 
 #table name in postgres
-table_name = 'vyborka_lic' #'cleaned_fronts_aug2019'
+table_name = 's_pr_tip_pred' #'cleaned_fronts_aug2019'
 
 #file that contains data to insert into postgres
-file_name = 'vyborka_lic' + '.csv'
+file_name = 's_pr_tip_pred' + '.csv'
 file_delimiter = ';'
 
 #path to data file
-path = 'H:/Работа2/27.05.19.Статрегистр/БД от росстата 28.08.19' #'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files' 
+path = 'H:/Работа2/27.05.19.Статрегистр/БД от росстата 21.10.19'#'H:/Работа2/27.05.19.Статрегистр/БД от росстата 28.08.19' #'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files' 
 
 os.chdir(path)
 
@@ -48,5 +48,12 @@ def insert_into_table():
     f.close()
     print('Inserted successfully')
 
+def drop_table():
+    cur.execute(f"""
+    DROP TABLE {schema}.{table_name}""")
+    conn.commit()
+    print(f"{table_name} droped")
+
+drop_table()
 create_table_with_csvheader()
 insert_into_table()
