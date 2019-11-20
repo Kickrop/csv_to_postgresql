@@ -12,11 +12,11 @@ cur = conn.cursor()
 schema = 'rospatent'#'rospatent' #'stat_customs'   #'fronts'statregistr
 
 #table name in postgres
-table_name = '_1_patstat_rospatent_assignees'  # 'cleaned_fronts_aug2019'
+table_name = 'moscow_dop_msk_org_2016'  # 'cleaned_fronts_aug2019'
 
 #file that contains data to insert into postgres
-file_name = '_1_patstat_rospatent_assignees' + '.csv'
-file_delimiter = ';'
+file_name = 'moscow_dop_msk_org_2016' + '.csv'
+file_delimiter = ','
 
 #path to data file
 # 'H:/Работа2/27.05.19.Статрегистр/БД от росстата 28.08.19' #'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files'
