@@ -1,26 +1,28 @@
 import psycopg2
 import csv
-#import private
+import private
 import os
 from tqdm import tqdm
 
 # main_ru
-conn = psycopg2.connect(host='127.0.0.1', dbname='postgres', user='postgres', password='68417399')
+#conn = psycopg2.connect(host='127.0.0.1', dbname='postgres', user='postgres', password='68417399')
+conn = psycopg2.connect(host=private.sr_host, dbname='tmp_media',
+                        user=private.sr_user, password=private.sr_password)
 cur = conn.cursor()
 
 #specify postgres schema
-schema = 'rospatent'#'rospatent' #'stat_customs'   #'fronts'statregistr
+schema = 'fronts'  # 'rospatent' #'stat_customs'   #'fronts'
 
 #table name in postgres
-table_name = 'moscow_dop_msk_org_2016'  # 'cleaned_fronts_aug2019'
+table_name = 'miss_cntr'  # 'cleaned_fronts_aug2019'
 
 #file that contains data to insert into postgres
-file_name = 'moscow_dop_msk_org_2016' + '.csv'
+file_name = 'miss_cntr' + '.csv'
 file_delimiter = ','
 
 #path to data file
 # 'H:/Работа2/27.05.19.Статрегистр/БД от росстата 28.08.19' #'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files'
-path = 'C:/YandexDisk/data/patstat_20191115'
+path = 'C:/YandexDisk/Карантин на работе/Фронты'
 
 os.chdir(path)
 
