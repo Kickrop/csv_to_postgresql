@@ -4,21 +4,21 @@ import private
 import os
 from tqdm import tqdm
 
-conn = psycopg2.connect(host=private.sr_host, dbname='cases', user=private.sr_user, password=private.sr_password) #main_ru
+conn = psycopg2.connect(host=private.sr_host, dbname='tmp_media', user=private.sr_user, password=private.sr_password) #main_ru cases
 cur = conn.cursor()
 
 #specify postgres schema
-schema = 'statregistr'#'rospatent' #'stat_customs'   #'fronts'statregistr
+schema = 'fronts'#'rospatent' #'stat_customs'   #'fronts'statregistr
 
 #table name in postgres
-table_name = 'org_inf' #'cleaned_fronts_aug2019'
+table_name = 'cleaned_fronts_aug2021' #''
 
 #file that contains data to insert into postgres
-file_name = 'org_inf' + '.csv'
-file_delimiter = ';'
+file_name = 'cleaned_fronts_aug2021' + '.csv'
+file_delimiter = ','
 
 #path to data file
-path = 'H:/Работа2/27.05.19.Статрегистр/БД от росстата 01.11.19'#'H:/Работа2/27.05.19.Статрегистр/БД от росстата 28.08.19' #'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files' 
+path = 'D:/work/fronts/aug2021_output'#'H:/Работа2/27.05.19.Статрегистр/БД от росстата 28.08.19' #'H:/Работа2/30.01.2019.Для Сагиевой/04.2019.РасчетЭкспорта' #'H:/Fronts/08_2019/front_files' 
 
 os.chdir(path)
 
